@@ -1,11 +1,13 @@
 package Acme::DarmstadtPM::TieHash;
 
+# ABSTRACT: a module that shows that Perl can do all the Ruby things ;-)
+
 use strict;
 use warnings;
 
 use Tie::ListKeyedHash;
 
-our $VERSION = '0.3';
+our $VERSION = '0.4';
 
 sub TIEHASH{
     my ($class,$code) = @_;
@@ -91,47 +93,27 @@ sub NEXTKEY {
 
 __END__
 
-=pod
-
-=head1 NAME
-
-Acme::DarmstadtPM::TieHash - a module that shows that Perl can do all the Ruby things ;-)
-
 =head1 SYNOPSIS
 
-   1 #!/usr/bin/perl
-   2
-   3 use strict;
-   4 use warnings;
-   5 use Test::More tests => 2;
-   6
-   7 use constant ADT => 'Acme::DarmstadtPM::TieHash';
-   8 
-   9 use_ok(ADT);
-  10 
-  11 tie my %hash,ADT,sub{$_[0] + $_[-1]};
-  12 
-  13 is($hash{[1,5]},6,'Check [1,5]');
-  14 
-  15 untie %hash;
+  #!/usr/bin/perl
+   
+  use strict;
+  use warnings;
+  use Test::More tests => 2;
+  
+  use constant ADT => 'Acme::DarmstadtPM::TieHash';
+   
+  use_ok(ADT);
+   
+  tie my %hash,ADT,sub{$_[0] + $_[-1]};
+  
+  is($hash{[1,5]},6,'Check [1,5]');
+   
+  untie %hash;
 
-=head1 ABSTRACT
-
-Test
 
 =head1 DESCRIPTION
 
-Ronnie Neumann sent a mail to the mailinglist with some good Ruby stuff. I said, that all these
+Ronnie sent a mail to the mailinglist with some good Ruby stuff. I said, that all these
 things can be done in Perl, too. So this module is a proof how smart Perl is...
 
-=head1 AUTHOR AND LICENSE
-
-copyright 2006 (c)
-Renee Baecker E<lt>module@renee-baecker.deE<gt>
-
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself, either Perl version 5.8.6 or,
-at your option, any later version of Perl 5 you may have available.
-
-=cut
