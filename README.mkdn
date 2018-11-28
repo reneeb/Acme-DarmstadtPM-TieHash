@@ -1,0 +1,92 @@
+[![Build Status](https://travis-ci.org/reneeb/Acme-DarmstadtPM-TieHash.svg?branch=master)](https://travis-ci.org/reneeb/Acme-DarmstadtPM-TieHash)
+[![Kwalitee status](http://cpants.cpanauthors.org/dist/Acme-DarmstadtPM-TieHash.png)](http://cpants.charsbar.org/dist/overview/Acme-DarmstadtPM-TieHash)
+[![GitHub issues](https://img.shields.io/github/issues/reneeb/Acme-DarmstadtPM-TieHash.svg)](https://github.com/reneeb/Acme-DarmstadtPM-TieHash/issues)
+
+# NAME
+
+Acme::DarmstadtPM::TieHash - a module that shows that Perl can do all the Ruby things ;-)
+
+# VERSION
+
+version 0.4
+
+# SYNOPSIS
+
+    #!/usr/bin/perl
+     
+    use strict;
+    use warnings;
+    use Test::More tests => 2;
+    
+    use constant ADT => 'Acme::DarmstadtPM::TieHash';
+     
+    use_ok(ADT);
+     
+    tie my %hash,ADT,sub{$_[0] + $_[-1]};
+    
+    is($hash{[1,5]},6,'Check [1,5]');
+     
+    untie %hash;
+
+# DESCRIPTION
+
+Ronnie sent a mail to the mailinglist with some good Ruby stuff. I said, that all these
+things can be done in Perl, too. So this module is a proof how smart Perl is...
+
+
+
+# Development
+
+The distribution is contained in a Git repository, so simply clone the
+repository
+
+```
+$ git clone http://github.com/reneeb/Acme-DarmstadtPM-TieHash.git
+```
+
+and change into the newly-created directory.
+
+```
+$ cd Acme-DarmstadtPM-TieHash
+```
+
+The project uses [`Dist::Zilla`](https://metacpan.org/pod/Dist::Zilla) to
+build the distribution, hence this will need to be installed before
+continuing:
+
+```
+$ cpanm Dist::Zilla
+```
+
+To install the required prequisite packages, run the following set of
+commands:
+
+```
+$ dzil authordeps --missing | cpanm
+$ dzil listdeps --author --missing | cpanm
+```
+
+The distribution can be tested like so:
+
+```
+$ dzil test
+```
+
+To run the full set of tests (including author and release-process tests),
+add the `--author` and `--release` options:
+
+```
+$ dzil test --author --release
+```
+
+# AUTHOR
+
+Renee Baecker <reneeb@cpan.org>
+
+# COPYRIGHT AND LICENSE
+
+This software is Copyright (c) 2014 by Renee Baecker.
+
+This is free software, licensed under:
+
+    The Artistic License 2.0 (GPL Compatible)
