@@ -8,7 +8,7 @@ Acme::DarmstadtPM::TieHash - a module that shows that Perl can do all the Ruby t
 
 # VERSION
 
-version 0.4
+version 0.5
 
 # SYNOPSIS
 
